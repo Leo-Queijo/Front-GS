@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BioSentinela X - Problema</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: url('./img/enchentes.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #f1f8f9;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6); 
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+    nav a {
+      color: #f1f8f9;
+      text-decoration: none;
+      transition: color 0.3s;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -3px;
+      left: 0;
+      background-color: #00cfff;
+      transition: width 0.3s ease;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    nav a:hover {
+      color: #00cfff;
+    }
+    .glow {
+      text-shadow: 0 0 8px #00cfff;
+    }
+    .btn-primary {
+      background-color: #00cfff;
+      color: #0c0c0c;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #00cfff;
+    }
+    .card {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 207, 255, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow:
+        0 0 15px #00cfff,
+        0 0 30px #00cfff,
+        0 0 40px #00cfff;
+      cursor: pointer;
+    }
+    .card img {
+      width: 180px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 0.75rem 0 0 0.75rem;
+      flex-shrink: 0;
+      margin-left: 0.5rem;
+    }
+    .card-content {
+      padding: 1rem 1.5rem;
+    }
+    .card-content h3 {
+      color: #00cfff;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 6px #00cfff;
+    }
+    .card-content p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #cbd5e1;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        flex-direction: column;
+        text-align: center;
+      }
+      .card img {
+        width: 100%;
+        height: 200px;
+        border-radius: 0.75rem 0.75rem 0 0;
+      }
+      .card-content {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col overflow-x-hidden relative">
+  <div class="overlay"></div>
+
+  <!-- Cabeçalho fixo -->
+  <header class="fixed top-0 left-0 w-full flex justify-between items-center p-4 bg-black bg-opacity-70 z-50">
+    <h1 class="text-2xl font-bold text-cyan-400">BioSentinela X</h1>
+    <button id="menu-btn" class="md:hidden text-cyan-400 focus:outline-none text-3xl">☰</button>
+    <nav id="menu" class="hidden md:flex flex flex-col md:flex-row md:items-center md:space-x-6 absolute md:static top-20 left-0 w-full md:w-auto bg-black md:bg-transparent bg-opacity-90 md:bg-opacity-0 p-4 md:p-0 z-50 space-y-4 md:space-y-0">
+      <a href="./index.html">Home</a>
+      <a href="./alertas.html">Alertas</a>
+      <a href="./monitoramento.html">Monitoramento</a>
+      <a href="./solucao.html">Solução</a>
+      <a href="./tecnologia.html">Tecnologia</a>
+      <a href="./contato.html">Contato</a>
+    </nav>
+  </header>
+
+
+  <main class="flex-grow max-w-6xl mx-auto px-4 py-8 relative z-10 mt-20">
+    <section class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 glow">O Problema Ambiental que Enfrentamos</h2>
+      <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">
+        Os desastres naturais, como enchentes, vêm causando danos irreparáveis ao meio ambiente e à população. A falta de monitoramento em tempo real agrava essa situação.
+      </p>
+    </section>
+
+    <section class="space-y-8">
+
+      <article class="card">
+        <img src="./img/cidade.png" alt="Enchentes Frequentes" />
+        <div class="card-content">
+          <h3>Enchentes Frequentes</h3>
+          <p>
+            Chuvas intensas e a ausência de sistemas de alerta antecipado deixam comunidades vulneráveis a alagamentos, causando destruição e risco de vidas.
+          </p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="./img/drenagem.png" alt="Dados Ambientais Desatualizados" />
+        <div class="card-content">
+          <h3>Dados Ambientais Desatualizados</h3>
+          <p>
+            Muitas regiões carecem de sensores e sistemas conectados, resultando em informações defasadas e dificultando a tomada de decisões preventivas.
+          </p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="./img/pop.png" alt="Impactos na População" />
+        <div class="card-content">
+          <h3>Impactos na População</h3>
+          <p>
+            As consequências dos desastres naturais atingem diretamente a saúde, segurança e economia das comunidades afetadas.
+          </p>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- Rodapé fixo no fim -->
+  <footer class="bg-black bg-opacity-70 p-6 text-center text-cyan-400 text-sm z-10 relative">
+    <p>© 2025 BioSentinela X – Todos os direitos reservados.</p>
+    <p>Desenvolvido por Você 💙</p>
+  </footer>
+
+  <!-- Script do menu mobile -->
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        menu.classList.remove('hidden');
+      } else {
+        menu.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
