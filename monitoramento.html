@@ -7,31 +7,41 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
   <style>
-    body {
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
       font-family: 'Orbitron', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
       background: url('./img/enchentes.png') no-repeat center center fixed;
       background-size: cover;
       color: #f1f8f9;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
       position: relative;
     }
+
     .overlay {
       background-color: rgba(0, 0, 0, 0.7);
       position: fixed;
       inset: 0;
       z-index: 0;
     }
+
     .glow {
       text-shadow: 0 0 8px #00cfff;
     }
+
     nav a {
       position: relative;
       color: #f1f8f9;
       text-decoration: none;
       transition: color 0.3s;
     }
+
     nav a::after {
       content: '';
       position: absolute;
@@ -42,12 +52,15 @@
       background-color: #00cfff;
       transition: width 0.3s ease;
     }
+
     nav a:hover::after {
       width: 100%;
     }
+
     nav a:hover {
       color: #00cfff;
     }
+
     .card-effect {
       background-color: rgba(0, 0, 0, 0.7);
       padding: 1.5rem;
@@ -62,6 +75,7 @@
       justify-content: center;
       text-align: center;
     }
+
     .card-effect:hover {
       transform: scale(1.05);
       box-shadow:
@@ -70,6 +84,7 @@
         0 0 40px #00cfff;
       cursor: pointer;
     }
+
     .card-effect:hover::before {
       content: '';
       position: absolute;
@@ -82,6 +97,7 @@
       pointer-events: none;
       border-radius: inherit;
     }
+
     @keyframes pulseGlow {
       0% {
         opacity: 0.3;
@@ -92,6 +108,7 @@
         transform: scale(1.1);
       }
     }
+
     .btn-primary {
       background-color: #00cfff;
       color: #0c0c0c;
@@ -103,21 +120,26 @@
       margin-top: 1rem;
       user-select: none;
     }
+
     .btn-primary:hover {
       transform: scale(1.05);
       box-shadow: 0 0 10px #00cfff;
     }
+
     main {
+      flex: 1;
       padding-top: 6rem; /* espaço para header fixo */
-      padding-bottom: 120px; /* espaço para footer fixo */
+      padding-bottom: 3rem; /* espaço visual extra */
       max-width: 960px;
       margin: 0 auto;
       padding-left: 1.5rem;
       padding-right: 1.5rem;
+      z-index: 10;
+      position: relative;
     }
   </style>
 </head>
-<body class="overflow-x-hidden relative">
+<body class="overflow-x-hidden">
 
   <div class="overlay"></div>
 
@@ -134,7 +156,7 @@
     </nav>
   </header>
 
-  <main class="relative z-10">
+  <main>
     <h2 class="text-4xl md:text-5xl font-bold mb-8 text-center glow">Monitoramento em Tempo Real</h2>
 
     <p class="text-center max-w-3xl mx-auto mb-12">
@@ -166,7 +188,7 @@
     </div>
   </main>
 
-  <footer id="contato" class="relative z-10 bg-black bg-opacity-70 p-6 mt-12 text-center text-cyan-400 text-sm select-none">
+  <footer id="contato" class="bg-black bg-opacity-70 p-6 text-center text-cyan-400 text-sm select-none z-10 relative">
     <p>© 2025 BioSentinela X – Todos os direitos reservados.</p>
     <p>Desenvolvido por Você 💙</p>
   </footer>
@@ -183,15 +205,12 @@
         document.getElementById('umidade-solo').textContent = umidade;
       }
 
-      const atualizarBtn = document.getElementById('atualizar-btn');
-      atualizarBtn.addEventListener('click', atualizarDados);
-
+      document.getElementById('atualizar-btn').addEventListener('click', atualizarDados);
       setInterval(atualizarDados, 15000);
       atualizarDados();
 
       const menuBtn = document.getElementById('menu-btn');
       const menu = document.getElementById('menu');
-
       menuBtn.addEventListener('click', () => {
         menu.classList.toggle('hidden');
       });
